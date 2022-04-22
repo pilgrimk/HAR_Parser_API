@@ -58,11 +58,12 @@ namespace ns_HAR_parser.Utils
         {
             if (File.Exists(logFilePath))
             {
+                WriteToLog(string.Format("GetLogFile, getting log file at file location: {0}", logFilePath), logMessageType.PROCESS);
                 return File.ReadAllLines(logFilePath);
             }
             else
             {
-                return new string[] { string.Format("Log file does not exist at this location: {0}", logFilePath) };
+                return new string[] { string.Format("GetLogFile, log file does not exist at this location: {0}", logFilePath) };
             }
         }
 
@@ -98,7 +99,6 @@ namespace ns_HAR_parser.Utils
         {
             return value.ToString(timestampFormat);
         }
-
 
         private void CreateEmptyFile(string filename)
         {

@@ -52,7 +52,14 @@ namespace HAR_Parser_API.Controllers
                     postedFile.CopyTo(stream);
                 }
 
-                return new JsonResult(fileName);
+                if (System.IO.File.Exists(uploadPath))
+                {
+                    return new JsonResult(fileName);
+                }
+                else 
+                {
+                    return new JsonResult("Failed to upload file");
+                }
             }
             catch (Exception ex)
             {
