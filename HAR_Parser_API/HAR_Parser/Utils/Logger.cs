@@ -55,16 +55,13 @@ namespace ns_HAR_parser.Utils
 
         public string[] GetLogFile()
         {
-            WriteToLog(string.Format("GetLogFile, getting log file at file location: {0}", logFilePath), logMessageType.PROCESS);
+            if (!File.Exists(logFilePath))
+            {
+                CreateEmptyFile(logFilePath);
+                return new string[] { string.Format("GetLogFile, new log file created at file location: {0}", logFilePath) };
 
-            if (File.Exists(logFilePath))
-            {
-                return File.ReadAllLines(logFilePath);
             }
-            else
-            {
-                return new string[] { string.Format("GetLogFile, log file does not exist at this location: {0}", logFilePath) };
-            }
+            return File.ReadAllLines(logFilePath);
         }
 
         public void DeleteLogFile()
