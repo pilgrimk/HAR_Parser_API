@@ -102,7 +102,16 @@ namespace ns_HAR_parser.Utils
 
         private string GetWorkingDirectory()
         {
-            string workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
+            string workingDirectory = "";
+
+            if (Assembly.GetEntryAssembly().Location.IndexOf("bin\\") > 0)
+            {
+                workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
+            }
+            else
+            {
+                workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            }
             return workingDirectory;
         }
 
