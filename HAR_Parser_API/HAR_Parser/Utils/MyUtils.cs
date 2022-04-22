@@ -126,6 +126,25 @@ namespace ns_HAR_parser.Utils
             }
             return workingDirectory;
         }
+
+        public static string BuildFilePath(string workingDir, string folder, string fileName)
+        {
+            string result;
+            string delim = workingDir.IndexOf("/") >= 0 ? "/" : "\\";
+
+            if ((workingDir.Substring(0, 1) == delim) || (workingDir.Substring(0, 2) == delim))
+            {
+                // try with relative path
+                result = folder + delim + fileName;
+            }
+            else
+            {
+                // build full path directory
+                result = workingDir + delim + folder + delim + fileName;
+            }
+
+            return result;
+        }
     }
 }
 

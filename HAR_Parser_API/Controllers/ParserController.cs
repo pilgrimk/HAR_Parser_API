@@ -18,7 +18,7 @@ namespace HAR_Parser_API.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _env;
-        private const string UPLOADS_DIRECTORY = "\\Uploads\\";
+        private const string UPLOADS_DIRECTORY = "Uploads";
         private const string FILE_NAME_KEY = "fileName";
 
         private ns_HAR_parser.Utils.Logger myLogger = new ns_HAR_parser.Utils.Logger();
@@ -38,7 +38,7 @@ namespace HAR_Parser_API.Controllers
                 var httpRequest = Request.Form;
                 var postedFile = httpRequest.Files[0];
                 var fileName = postedFile.FileName;
-                var uploadPath = ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory() + UPLOADS_DIRECTORY + fileName;
+                var uploadPath = ns_HAR_parser.Utils.MyUtils.BuildFilePath( ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory(), UPLOADS_DIRECTORY, fileName);
                 var uploadDir = Path.GetDirectoryName(uploadPath);
 
                 if (!Directory.Exists(uploadDir))
@@ -82,7 +82,7 @@ namespace HAR_Parser_API.Controllers
                 if (httpRequest.TryGetValue(FILE_NAME_KEY, out fileName))
                 {
                     HAR_parser parser = new HAR_parser();
-                    var physicalPath = ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory() + UPLOADS_DIRECTORY + fileName;
+                    var physicalPath = ns_HAR_parser.Utils.MyUtils.BuildFilePath(ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory(), UPLOADS_DIRECTORY, fileName);
 
                     if (System.IO.File.Exists(physicalPath))
                     {

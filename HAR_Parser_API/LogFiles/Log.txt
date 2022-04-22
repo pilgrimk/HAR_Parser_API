@@ -2,3 +2,4 @@
 [2022-04-22T12:15:39] [Process]- LogFile: getting log file data
 [2022-04-22T12:15:41] [Process]- LogFile: getting log file data
 [2022-04-22T12:25:43] [Process]- GetLogFile, getting log file at file location: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\LogFiles\Log.txt
+[2022-04-22T13:07:19] [Process]- GetLogFile, getting log file at file location: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\LogFiles\Log.txt

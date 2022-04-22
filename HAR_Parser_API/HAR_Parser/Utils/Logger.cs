@@ -9,7 +9,7 @@ namespace ns_HAR_parser.Utils
     {
         private string logFilePath = string.Empty;
         private const string logFileName = "Log.txt";
-        private const string LOGFILES_DIRECTORY = "\\LogFiles\\";
+        private const string LOGFILES_DIRECTORY = "LogFiles";
         private const string timestampFormat = "yyyy-MM-ddTHH:mm:ss";
         private const string ERROR_MSG_TEMPLATE = "[Error]- {0}";
         private const string PROCESS_MSG_TEMPLATE = "[Process]- {0}";
@@ -23,7 +23,7 @@ namespace ns_HAR_parser.Utils
         // instantiate the class
         public Logger()
         {
-            logFilePath = Utils.MyUtils.GetWorkingDirectory() + LOGFILES_DIRECTORY + logFileName;
+            logFilePath = Utils.MyUtils.BuildFilePath(Utils.MyUtils.GetWorkingDirectory(), LOGFILES_DIRECTORY, logFileName);
         }
 
         public void WriteToLog(string logMessage, logMessageType msgType = logMessageType.ERROR)

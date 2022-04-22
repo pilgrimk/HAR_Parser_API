@@ -14,6 +14,18 @@ namespace HAR_Parser_API.Controllers
     {
         private ns_HAR_parser.Utils.Logger myLogger = new ns_HAR_parser.Utils.Logger();
 
+        [Route("Test")]
+        [HttpPost]
+        public JsonResult Test()
+        {
+            string workingDir = "/app/heroku_output";
+            string folder = "LogFiles";
+            string fileName = "Log.txt";
+            string result = ns_HAR_parser.Utils.MyUtils.BuildFilePath(workingDir, folder, fileName);
+
+            return new JsonResult(result);
+        }
+
         [HttpGet]
         public JsonResult Get()
         {
