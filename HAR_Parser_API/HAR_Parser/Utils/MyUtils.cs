@@ -114,7 +114,7 @@ namespace ns_HAR_parser.Utils
 
         public static string GetWorkingDirectory()
         {
-            string workingDirectory = "";
+            string workingDirectory;
 
             if (Assembly.GetEntryAssembly().Location.IndexOf("bin\\") > 0)
             {

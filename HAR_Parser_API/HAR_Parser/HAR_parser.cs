@@ -40,7 +40,7 @@ namespace ns_HAR_parser
             {
                 if (String.IsNullOrEmpty(filepath))
                 {
-                    throw new Exception("ImportDataFile: data source file is invalid, filepath: " + filepath);
+                    throw new Exception("ImportDataFile: data source file is empty ");
                 }
 
                 //read entire file into a single string.

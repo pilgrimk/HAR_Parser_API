@@ -71,7 +71,9 @@ namespace HAR_Parser_API.Controllers
                 if (httpRequest.TryGetValue(FILE_NAME_KEY, out fileName))
                 {
                     HAR_parser parser = new HAR_parser();
-                    var physicalPath = _env.ContentRootPath + UPLOADS_DIRECTORY + fileName;
+                    var physicalPath = ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory() + UPLOADS_DIRECTORY + fileName;
+
+                    WriteToLogFile(string.Format("ParseFile, physicalPath: {0} ", physicalPath), ns_HAR_parser.Utils.Logger.logMessageType.PROCESS);
 
                     homes = parser.ParseFile(physicalPath);
                 }
