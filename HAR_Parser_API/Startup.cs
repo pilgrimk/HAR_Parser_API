@@ -14,6 +14,7 @@ using Newtonsoft.Json.Serialization;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace HAR_Parser_API
 {
@@ -49,6 +50,12 @@ namespace HAR_Parser_API
                 options.MultipartBodyLengthLimit = long.MaxValue; //not recommended value
                 options.MemoryBufferThreshold = int.MaxValue;
             });
+
+            // never persist key store to local directory, just for demo purposes
+            services.AddDataProtection()
+                .SetApplicationName("DataProtectionDemo")
+                .PersistKeysToFileSystem(new DirectoryInfo(Directory.GetCurrentDirectory()));
+            //.ProtectKeysWithDpapi();
 
             services.AddControllers();
         }
