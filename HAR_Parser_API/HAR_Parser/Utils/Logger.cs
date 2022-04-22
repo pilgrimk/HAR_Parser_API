@@ -22,7 +22,7 @@ namespace ns_HAR_parser.Utils
         // instantiate the class
         public Logger()
         {
-            logFilePath = GetWorkingDirectory() + LOGFILES_DIRECTORY + logFileName;
+            logFilePath = ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory() + LOGFILES_DIRECTORY + logFileName;
         }
 
         public void WriteToLog(string logMessage, logMessageType msgType = logMessageType.ERROR)
@@ -98,21 +98,6 @@ namespace ns_HAR_parser.Utils
         private string GetTimestamp(DateTime value)
         {
             return value.ToString(timestampFormat);
-        }
-
-        private string GetWorkingDirectory()
-        {
-            string workingDirectory = "";
-
-            if (Assembly.GetEntryAssembly().Location.IndexOf("bin\\") > 0)
-            {
-                workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
-            }
-            else
-            {
-                workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            }
-            return workingDirectory;
         }
 
         private void CreateEmptyFile(string filename)
