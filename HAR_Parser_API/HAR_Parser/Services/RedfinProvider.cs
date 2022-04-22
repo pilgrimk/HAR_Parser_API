@@ -39,8 +39,6 @@ namespace ns_HAR_parser.Services
 
         public void ProcessContentData()
         {
-            WriteToLogFile(string.Format("ProcessContentData, entry "), Utils.Logger.logMessageType.PROCESS);
-
             Dictionary<string, string> mlsListings = new Dictionary<string, string>();
             _homes_tbl.Clear();
             long homes_counter_total = 0;
