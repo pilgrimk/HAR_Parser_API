@@ -14,6 +14,13 @@ namespace HAR_Parser_API.Controllers
     {
         private ns_HAR_parser.Utils.Logger myLogger = new ns_HAR_parser.Utils.Logger();
 
+        [Route("Test")]
+        [HttpGet]
+        public JsonResult Test()
+        {
+            return new JsonResult("Test");
+        }
+
         [Route("GetLogFile")]
         [HttpPost]
         public JsonResult GetLogFile()
