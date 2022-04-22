@@ -37,7 +37,11 @@ namespace HAR_Parser_API.Controllers
                 var httpRequest = Request.Form;
                 var postedFile = httpRequest.Files[0];
                 var fileName = postedFile.FileName;
-                var physicalPath = _env.ContentRootPath + UPLOADS_DIRECTORY + fileName;
+                var physicalPath = ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory() + UPLOADS_DIRECTORY + fileName;
+
+                WriteToLogFile(string.Format("UploadFile, physicalPath: {0} ", physicalPath), ns_HAR_parser.Utils.Logger.logMessageType.PROCESS);
+
+                VerifyDirectory(physicalPath);
 
                 using (var stream = new FileStream(physicalPath, FileMode.Create))
                 {
@@ -88,6 +92,15 @@ namespace HAR_Parser_API.Controllers
         private void WriteToLogFile(string msg, ns_HAR_parser.Utils.Logger.logMessageType msgType)
         {
             myLogger.WriteToLog(msg, msgType);
+        }
+
+        private void VerifyDirectory(string filename)
+        {
+            if (!Directory.Exists(Path.GetDirectoryName(filename)))
+            {
+                // create the directory
+                Directory.CreateDirectory(Path.GetDirectoryName(filename));
+            }
         }
     }
 }
