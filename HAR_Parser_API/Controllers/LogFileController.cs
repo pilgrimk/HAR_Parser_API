@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 namespace HAR_Parser_API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class LogFileController : Controller
     {
         private ns_HAR_parser.Utils.Logger myLogger = new ns_HAR_parser.Utils.Logger();
@@ -21,26 +21,23 @@ namespace HAR_Parser_API.Controllers
             return new JsonResult("Test");
         }
 
-        [Route("GetLogFile")]
-        [HttpPost]
-        public JsonResult GetLogFile()
+        [HttpGet]
+        public JsonResult Get()
         {
             try
             {
-                WriteToLogFile("GetLogFile, getting log file data", ns_HAR_parser.Utils.Logger.logMessageType.PROCESS);
                 string[] result = myLogger.GetLogFile();
                 return new JsonResult(result);
             }
             catch (Exception ex)
             {
-                WriteToLogFile("GetLogFile, " + ex.Message, ns_HAR_parser.Utils.Logger.logMessageType.ERROR);
-                return new JsonResult("GetLogFile Error: " + ex.Message);
+                WriteToLogFile("LogFile Get, Error: " + ex.Message, ns_HAR_parser.Utils.Logger.logMessageType.ERROR);
+                return new JsonResult("LogFile Get, Error: " + ex.Message);
             }
         }
 
-        [Route("DeleteLogFile")]
-        [HttpPost]
-        public JsonResult DeleteLogFile()
+        [HttpDelete]
+        public JsonResult Delete()
         {
             try
             {
@@ -49,8 +46,8 @@ namespace HAR_Parser_API.Controllers
             }
             catch (Exception ex)
             {
-                WriteToLogFile("DeleteLogFile, " + ex.Message, ns_HAR_parser.Utils.Logger.logMessageType.ERROR);
-                return new JsonResult("DeleteLogFile Error: " + ex.Message);
+                WriteToLogFile("LogFile Delete, Error:" + ex.Message, ns_HAR_parser.Utils.Logger.logMessageType.ERROR);
+                return new JsonResult("LogFile Delete, Error:" + ex.Message);
             }
         }
 

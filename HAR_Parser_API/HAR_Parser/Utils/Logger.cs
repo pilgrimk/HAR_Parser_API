@@ -6,12 +6,10 @@ namespace ns_HAR_parser.Utils
 {
     class Logger
     {
-        private string assemblyPath = string.Empty;
         private string logFilePath = string.Empty;
-
+        private const string logFileName = "Log.txt";
         private const string LOGFILES_DIRECTORY = "\\LogFiles\\";
         private const string timestampFormat = "yyyy-MM-ddTHH:mm:ss";
-        private const string logFileName = "Log.txt";
         private const string ERROR_MSG_TEMPLATE = "[Error]- {0}";
         private const string PROCESS_MSG_TEMPLATE = "[Process]- {0}";
 
@@ -59,11 +57,12 @@ namespace ns_HAR_parser.Utils
         {
             if (File.Exists(logFilePath))
             {
+                WriteToLog(string.Format("GetLogFile, getting log file at file location: {0}", logFilePath), logMessageType.PROCESS);
                 return File.ReadAllLines(logFilePath);
             }
             else
             {
-                return new string[] { string.Format("Log file does not exist at this location: {0}", logFilePath) };
+                return new string[] { string.Format("GetLogFile, log file does not exist at this location: {0}", logFilePath) };
             }
         }
 
