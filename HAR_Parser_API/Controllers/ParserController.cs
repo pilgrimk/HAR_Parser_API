@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using ns_HAR_parser;
 using System.Data;
 using System.IO;
+using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
 
 namespace HAR_Parser_API.Controllers
@@ -20,7 +20,7 @@ namespace HAR_Parser_API.Controllers
         private const string UPLOADS_DIRECTORY = "\\Uploads\\";
         private const string FILE_NAME_KEY = "fileName";
 
-        ns_HAR_parser.Utils.Logger myLogger = new ns_HAR_parser.Utils.Logger();
+        private ns_HAR_parser.Utils.Logger myLogger = new ns_HAR_parser.Utils.Logger();
 
         public ParserController(IConfiguration configuration, IWebHostEnvironment env)
         {

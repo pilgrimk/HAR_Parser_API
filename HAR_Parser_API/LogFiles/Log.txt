@@ -1,0 +1,5 @@
+[2022-04-22T10:18:35] [Process]- GetLogFile, getting log file data
+[2022-04-22T10:18:38] [Process]- GetLogFile, getting log file data
+[2022-04-22T10:18:39] [Process]- GetLogFile, getting log file data
+[2022-04-22T10:18:40] [Process]- GetLogFile, getting log file data
+[2022-04-22T10:18:41] [Process]- GetLogFile, getting log file data

@@ -9,6 +9,7 @@ namespace ns_HAR_parser.Utils
         private string assemblyPath = string.Empty;
         private string logFilePath = string.Empty;
 
+        private const string LOGFILES_DIRECTORY = "\\LogFiles\\";
         private const string timestampFormat = "yyyy-MM-ddTHH:mm:ss";
         private const string logFileName = "Log.txt";
         private const string ERROR_MSG_TEMPLATE = "[Error]- {0}";
@@ -23,8 +24,7 @@ namespace ns_HAR_parser.Utils
         // instantiate the class
         public Logger()
         {
-            assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            logFilePath = assemblyPath + "\\" + logFileName;
+            logFilePath = GetWorkingDirectory() + LOGFILES_DIRECTORY + logFileName;
         }
 
         public void WriteToLog(string logMessage, logMessageType msgType = logMessageType.ERROR)
@@ -55,23 +55,67 @@ namespace ns_HAR_parser.Utils
             LogWrite(msg);
         }
 
+        public string[] GetLogFile()
+        {
+            if (File.Exists(logFilePath))
+            {
+                return File.ReadAllLines(logFilePath);
+            }
+            else
+            {
+                return new string[] { string.Format("Log file does not exist at this location: {0}", logFilePath) };
+            }
+        }
+
+        public void DeleteLogFile()
+        {
+            if (File.Exists(logFilePath))
+            {
+                File.Delete(logFilePath);
+            }
+        }
+
         private void LogWrite(string logMessage)
         {
             try
             {
+                if (! File.Exists(logFilePath))
+                {
+                    // create an empty Log file if it does not exist
+                    CreateEmptyFile(logFilePath);
+                }
                 using (StreamWriter w = File.AppendText(logFilePath))
                 {
                     w.WriteLine("[{0}] {1}", GetTimestamp(DateTime.Now), logMessage);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                string msg = ex.Message;
             }
         }
 
         private string GetTimestamp(DateTime value)
         {
             return value.ToString(timestampFormat);
+        }
+
+        private string GetWorkingDirectory()
+        {
+            string workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
+            return workingDirectory;
+        }
+
+        private void CreateEmptyFile(string filename)
+        {
+            if (! Directory.Exists(Path.GetDirectoryName(filename)))
+            { 
+                // create the directory
+                Directory.CreateDirectory(Path.GetDirectoryName(filename));
+            }
+
+            // create the file
+            File.Create(filename).Dispose();
         }
     }
 }
