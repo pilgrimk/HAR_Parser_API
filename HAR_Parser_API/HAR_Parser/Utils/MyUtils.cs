@@ -111,6 +111,21 @@ namespace ns_HAR_parser.Utils
                 return false;
             }
         }
+
+        public static string GetWorkingDirectory()
+        {
+            string workingDirectory;
+
+            if (Assembly.GetEntryAssembly().Location.IndexOf("bin\\") > 0)
+            {
+                workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
+            }
+            else
+            {
+                workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            }
+            return workingDirectory;
+        }
     }
 }
 

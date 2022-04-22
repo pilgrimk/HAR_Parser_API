@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ns_HAR_parser;
+using ns_HAR_parser.Utils;
 using System.Data;
 using System.IO;
 using Microsoft.Extensions.Configuration;
@@ -37,9 +38,16 @@ namespace HAR_Parser_API.Controllers
                 var httpRequest = Request.Form;
                 var postedFile = httpRequest.Files[0];
                 var fileName = postedFile.FileName;
-                var physicalPath = _env.ContentRootPath + UPLOADS_DIRECTORY + fileName;
+                var uploadPath = ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory() + UPLOADS_DIRECTORY + fileName;
+                var uploadDir = Path.GetDirectoryName(uploadPath);
 
-                using (var stream = new FileStream(physicalPath, FileMode.Create))
+                if (!Directory.Exists(uploadDir))
+                {
+                    WriteToLogFile(string.Format("UploadFile, creating directory: {0}", uploadDir), ns_HAR_parser.Utils.Logger.logMessageType.PROCESS);
+                    Directory.CreateDirectory(Path.GetDirectoryName(uploadDir));
+                }
+
+                using (var stream = new FileStream(uploadPath, FileMode.Create))
                 {
                     postedFile.CopyTo(stream);
                 }
@@ -67,9 +75,16 @@ namespace HAR_Parser_API.Controllers
                 if (httpRequest.TryGetValue(FILE_NAME_KEY, out fileName))
                 {
                     HAR_parser parser = new HAR_parser();
-                    var physicalPath = _env.ContentRootPath + UPLOADS_DIRECTORY + fileName;
+                    var physicalPath = ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory() + UPLOADS_DIRECTORY + fileName;
 
-                    homes = parser.ParseFile(physicalPath);
+                    if (System.IO.File.Exists(physicalPath))
+                    {
+                        homes = parser.ParseFile(physicalPath);
+                    }
+                    else
+                    {
+                        WriteToLogFile(string.Format("ParseFile, specified file does not exist: {0}", physicalPath), ns_HAR_parser.Utils.Logger.logMessageType.PROCESS);
+                    }
                 }
                 else
                 {

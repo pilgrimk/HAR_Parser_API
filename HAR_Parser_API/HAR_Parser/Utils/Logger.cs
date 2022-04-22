@@ -1,17 +1,16 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using ns_HAR_parser.Utils;
 
 namespace ns_HAR_parser.Utils
 {
     class Logger
     {
-        private string assemblyPath = string.Empty;
         private string logFilePath = string.Empty;
-
+        private const string logFileName = "Log.txt";
         private const string LOGFILES_DIRECTORY = "\\LogFiles\\";
         private const string timestampFormat = "yyyy-MM-ddTHH:mm:ss";
-        private const string logFileName = "Log.txt";
         private const string ERROR_MSG_TEMPLATE = "[Error]- {0}";
         private const string PROCESS_MSG_TEMPLATE = "[Process]- {0}";
 
@@ -24,7 +23,7 @@ namespace ns_HAR_parser.Utils
         // instantiate the class
         public Logger()
         {
-            logFilePath = GetWorkingDirectory() + LOGFILES_DIRECTORY + logFileName;
+            logFilePath = Utils.MyUtils.GetWorkingDirectory() + LOGFILES_DIRECTORY + logFileName;
         }
 
         public void WriteToLog(string logMessage, logMessageType msgType = logMessageType.ERROR)
@@ -100,20 +99,6 @@ namespace ns_HAR_parser.Utils
             return value.ToString(timestampFormat);
         }
 
-        private string GetWorkingDirectory()
-        {
-            string workingDirectory = "";
-
-            if (Assembly.GetEntryAssembly().Location.IndexOf("bin\\") > 0)
-            {
-                workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location.Substring(0, Assembly.GetEntryAssembly().Location.IndexOf("bin\\")));
-            }
-            else
-            {
-                workingDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            }
-            return workingDirectory;
-        }
 
         private void CreateEmptyFile(string filename)
         {

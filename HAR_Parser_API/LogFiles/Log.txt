@@ -3,3 +3,7 @@
 [2022-04-22T10:18:39] [Process]- GetLogFile, getting log file data
 [2022-04-22T10:18:40] [Process]- GetLogFile, getting log file data
 [2022-04-22T10:18:41] [Process]- GetLogFile, getting log file data
+[2022-04-22T11:28:25] [Process]- UploadFile, specified file does not exist: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.har
+[2022-04-22T11:38:46] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.har' successfully imported; length: 22072397 
+[2022-04-22T11:38:47] [Process]- ProcessContentData, entry 
+[2022-04-22T11:41:19] [Process]- ProcessContentData, exit; 620 of 31380 home files processed 
