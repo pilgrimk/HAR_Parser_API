@@ -51,12 +51,6 @@ namespace HAR_Parser_API
                 options.MemoryBufferThreshold = int.MaxValue;
             });
 
-            // never persist key store to local directory, just for demo purposes
-            services.AddDataProtection()
-                .SetApplicationName("DataProtectionDemo")
-                .PersistKeysToFileSystem(new DirectoryInfo(Directory.GetCurrentDirectory()));
-            //.ProtectKeysWithDpapi();
-
             services.AddControllers();
         }
 

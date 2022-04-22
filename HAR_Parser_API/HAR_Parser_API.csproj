@@ -14,5 +14,11 @@
     <Folder Include="HAR_Parser\Utils\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Uploads\www.redfin.com.har">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 
 </Project>
