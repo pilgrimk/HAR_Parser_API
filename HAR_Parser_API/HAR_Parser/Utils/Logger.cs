@@ -55,9 +55,10 @@ namespace ns_HAR_parser.Utils
 
         public string[] GetLogFile()
         {
+            WriteToLog(string.Format("GetLogFile, getting log file at file location: {0}", logFilePath), logMessageType.PROCESS);
+
             if (File.Exists(logFilePath))
             {
-                WriteToLog(string.Format("GetLogFile, getting log file at file location: {0}", logFilePath), logMessageType.PROCESS);
                 return File.ReadAllLines(logFilePath);
             }
             else
