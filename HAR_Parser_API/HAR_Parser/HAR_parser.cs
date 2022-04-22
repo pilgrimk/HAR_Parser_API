@@ -18,7 +18,8 @@ namespace ns_HAR_parser
         {
             DataTable homes = new DataTable();
 
-            try {
+            try
+            {
                 string data_file = ImportDataFile(filepath);
                 if (!String.IsNullOrEmpty(data_file))
                 {

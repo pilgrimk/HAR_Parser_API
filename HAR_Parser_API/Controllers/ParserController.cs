@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ns_HAR_parser;
-using ns_HAR_parser.Utils;
 using System.Data;
 using System.IO;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +17,7 @@ namespace HAR_Parser_API.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _env;
-        private const string UPLOADS_DIRECTORY = "Uploads";
+        private const string UPLOADS_DIRECTORY = "\\Uploads\\";
         private const string FILE_NAME_KEY = "fileName";
 
         private ns_HAR_parser.Utils.Logger myLogger = new ns_HAR_parser.Utils.Logger();
@@ -33,33 +32,19 @@ namespace HAR_Parser_API.Controllers
         [HttpPost]
         public JsonResult UploadFile()
         {
-            try 
+            try
             {
                 var httpRequest = Request.Form;
                 var postedFile = httpRequest.Files[0];
                 var fileName = postedFile.FileName;
-                var uploadPath = ns_HAR_parser.Utils.MyUtils.BuildFilePath( ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory(), UPLOADS_DIRECTORY, fileName);
-                var uploadDir = Path.GetDirectoryName(uploadPath);
+                var physicalPath = _env.ContentRootPath + UPLOADS_DIRECTORY + fileName;
 
-                if (!Directory.Exists(uploadDir))
-                {
-                    WriteToLogFile(string.Format("UploadFile, creating directory: {0}", uploadDir), ns_HAR_parser.Utils.Logger.logMessageType.PROCESS);
-                    Directory.CreateDirectory(Path.GetDirectoryName(uploadDir));
-                }
-
-                using (var stream = new FileStream(uploadPath, FileMode.Create))
+                using (var stream = new FileStream(physicalPath, FileMode.Create))
                 {
                     postedFile.CopyTo(stream);
                 }
 
-                if (System.IO.File.Exists(uploadPath))
-                {
-                    return new JsonResult(fileName);
-                }
-                else 
-                {
-                    return new JsonResult("Failed to upload file");
-                }
+                return new JsonResult(fileName);
             }
             catch (Exception ex)
             {
@@ -73,7 +58,7 @@ namespace HAR_Parser_API.Controllers
         [HttpPost]
         public JsonResult ParseFile()
         {
-            try 
+            try
             {
                 DataTable homes = new DataTable();
                 var httpRequest = Request.Form;
@@ -82,16 +67,9 @@ namespace HAR_Parser_API.Controllers
                 if (httpRequest.TryGetValue(FILE_NAME_KEY, out fileName))
                 {
                     HAR_parser parser = new HAR_parser();
-                    var physicalPath = ns_HAR_parser.Utils.MyUtils.BuildFilePath(ns_HAR_parser.Utils.MyUtils.GetWorkingDirectory(), UPLOADS_DIRECTORY, fileName);
+                    var physicalPath = _env.ContentRootPath + UPLOADS_DIRECTORY + fileName;
 
-                    if (System.IO.File.Exists(physicalPath))
-                    {
-                        homes = parser.ParseFile(physicalPath);
-                    }
-                    else
-                    {
-                        WriteToLogFile(string.Format("ParseFile, specified file does not exist: {0}", physicalPath), ns_HAR_parser.Utils.Logger.logMessageType.PROCESS);
-                    }
+                    homes = parser.ParseFile(physicalPath);
                 }
                 else
                 {

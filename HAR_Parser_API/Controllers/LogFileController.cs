@@ -9,40 +9,38 @@ using Microsoft.AspNetCore.Hosting;
 namespace HAR_Parser_API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class LogFileController : Controller
     {
         private ns_HAR_parser.Utils.Logger myLogger = new ns_HAR_parser.Utils.Logger();
 
         [Route("Test")]
-        [HttpPost]
+        [HttpGet]
         public JsonResult Test()
         {
-            string workingDir = "/app/heroku_output";
-            string folder = "LogFiles";
-            string fileName = "Log.txt";
-            string result = ns_HAR_parser.Utils.MyUtils.BuildFilePath(workingDir, folder, fileName);
-
-            return new JsonResult(result);
+            return new JsonResult("Test");
         }
 
-        [HttpGet]
-        public JsonResult Get()
+        [Route("GetLogFile")]
+        [HttpPost]
+        public JsonResult GetLogFile()
         {
             try
             {
+                WriteToLogFile("GetLogFile, getting log file data", ns_HAR_parser.Utils.Logger.logMessageType.PROCESS);
                 string[] result = myLogger.GetLogFile();
                 return new JsonResult(result);
             }
             catch (Exception ex)
             {
-                WriteToLogFile("LogFile Get, Error: " + ex.Message, ns_HAR_parser.Utils.Logger.logMessageType.ERROR);
-                return new JsonResult("LogFile Get, Error: " + ex.Message);
+                WriteToLogFile("GetLogFile, " + ex.Message, ns_HAR_parser.Utils.Logger.logMessageType.ERROR);
+                return new JsonResult("GetLogFile Error: " + ex.Message);
             }
         }
 
-        [HttpDelete]
-        public JsonResult Delete()
+        [Route("DeleteLogFile")]
+        [HttpPost]
+        public JsonResult DeleteLogFile()
         {
             try
             {
@@ -51,8 +49,8 @@ namespace HAR_Parser_API.Controllers
             }
             catch (Exception ex)
             {
-                WriteToLogFile("LogFile Delete, Error:" + ex.Message, ns_HAR_parser.Utils.Logger.logMessageType.ERROR);
-                return new JsonResult("LogFile Delete, Error:" + ex.Message);
+                WriteToLogFile("DeleteLogFile, " + ex.Message, ns_HAR_parser.Utils.Logger.logMessageType.ERROR);
+                return new JsonResult("DeleteLogFile Error: " + ex.Message);
             }
         }
 
