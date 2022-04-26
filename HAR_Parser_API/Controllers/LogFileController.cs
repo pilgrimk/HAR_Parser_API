@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 namespace HAR_Parser_API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class LogFileController : Controller
     {
         private ns_HAR_parser.Utils.Logger myLogger = new ns_HAR_parser.Utils.Logger();

@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 namespace HAR_Parser_API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ParserController : Controller
     {
         private readonly IConfiguration _configuration;
