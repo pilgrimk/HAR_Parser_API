@@ -28,6 +28,21 @@ namespace HAR_Parser_API.Controllers
             _env = env;
         }
 
+        [Route("Test")]
+        [HttpGet]
+        public JsonResult Test()
+        {
+            try
+            {
+                return new JsonResult("Test");
+            }
+            catch (Exception ex)
+            {
+                WriteToLogFile("Test, " + ex.Message, ns_HAR_parser.Utils.Logger.logMessageType.ERROR);
+                return new JsonResult("Test Error: " + ex.Message);
+            }
+        }
+
         [Route("UploadFile")]
         [HttpPost]
         public JsonResult UploadFile()
