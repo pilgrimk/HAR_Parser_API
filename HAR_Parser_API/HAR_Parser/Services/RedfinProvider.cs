@@ -112,12 +112,12 @@ namespace ns_HAR_parser.Services
 
                                         // calculate DAYS from MILLISECONDS
                                         home_rec.timeOnRedfin = (long)0;
-                                        if ((long)home["timeOnRedfin"]["value"] > 0) 
-                                        {
-                                            timeInMilli = (long)home["timeOnRedfin"]["value"];
-                                            timeInDays = (decimal)(timeInMilli / 1000 / 60 / 60 / 24);
-                                            home_rec.timeOnRedfin = (long)Math.Ceiling(timeInDays);
-                                        }
+                                        //if ((long)home["timeOnRedfin"]["value"] > 0) 
+                                        //{
+                                        //    timeInMilli = (long)home["timeOnRedfin"]["value"];
+                                        //    timeInDays = (decimal)(timeInMilli / 1000 / 60 / 60 / 24);
+                                        //    home_rec.timeOnRedfin = (long)Math.Ceiling(timeInDays);
+                                        //}
 
                                         // add to the HOME data table
                                         if (_homes_tbl.Columns.Count == 0)
