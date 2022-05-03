@@ -12,7 +12,9 @@ namespace ns_HAR_parser
 {
     public class HAR_parser
     {
-        Utils.Logger myLogger = new Utils.Logger();
+        private string baseURL_zillow = "https://www.zillow.com";
+        private string baseURL_redfin = "https://www.redfin.com";
+        private Utils.Logger myLogger = new Utils.Logger();
 
         public DataTable ParseFile(string filepath)
         {
@@ -85,11 +87,11 @@ namespace ns_HAR_parser
         {
             IProvider provider = null;
 
-            if (data_file.ToLower().IndexOf("https://www.zillow.com") > 0)
+            if (data_file.ToLower().IndexOf(baseURL_zillow) > 0)
             {
                 provider = new ZillowProvider(data_file);
             }
-            else if (data_file.IndexOf("https://www.redfin.com") > 0)
+            else if (data_file.IndexOf(baseURL_redfin) > 0)
             {
                 provider = new RedfinProvider(data_file);
             }

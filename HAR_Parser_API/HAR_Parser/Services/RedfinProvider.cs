@@ -15,9 +15,11 @@ namespace ns_HAR_parser.Services
         Utils.Logger myLogger = new Utils.Logger();
         private string _json_text;
         private DataTable _homes_tbl = new DataTable();
+        private string baseURL = "https://www.redfin.com";
 
         private JObject obj_JSON_file;
         private List<JToken> homes_data = new List<JToken>();
+
 
         // Constructor
         public RedfinProvider(string data_file)
@@ -104,7 +106,7 @@ namespace ns_HAR_parser.Services
                                         home_rec.listingId = (long)home["listingId"];
                                         home_rec.yearBuilt = (int)home["yearBuilt"]["value"];
                                         home_rec.timeOnRedfin = (long)home["timeOnRedfin"]["value"];
-                                        home_rec.url = (string)home["url"];
+                                        home_rec.url = baseURL + "/" + (string)home["url"];
                                         home_rec.listingRemarks = (string)home["listingRemarks"];
 
                                         // add to the HOME data table
