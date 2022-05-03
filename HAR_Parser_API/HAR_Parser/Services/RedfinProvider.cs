@@ -111,7 +111,7 @@ namespace ns_HAR_parser.Services
                                         home_rec.listingRemarks = (string)home["listingRemarks"];
 
                                         // calculate DAYS from MILLISECONDS
-                                        home_rec.timeOnRedfin = 1;
+                                        home_rec.timeOnRedfin = (long)0;
                                         if ((long)home["timeOnRedfin"]["value"] > 0) 
                                         {
                                             timeInMilli = (long)home["timeOnRedfin"]["value"];
