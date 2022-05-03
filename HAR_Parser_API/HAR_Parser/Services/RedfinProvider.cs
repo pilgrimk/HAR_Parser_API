@@ -109,12 +109,12 @@ namespace ns_HAR_parser.Services
                                         home_rec.listingRemarks = (string)home["listingRemarks"];
 
                                         // calculate DAYS from MILLISECONDS
-                                        home_rec.timeOnRedfin = (long)0;
+                                        home_rec.daysListed = (long)0;
                                         if ((long)home["timeOnRedfin"]["value"] > 0)
                                         {
                                             long timeInMilli = (long)home["timeOnRedfin"]["value"];
-                                            decimal timeInDays = (decimal)(timeInMilli / 1000 / 60 / 60 / 24);
-                                            home_rec.timeOnRedfin = (long)Math.Ceiling(timeInDays);
+                                            decimal timeInDays = (decimal)(timeInMilli / (1000 * 60 * 60 * 24));
+                                            home_rec.daysListed = (long)Math.Ceiling(timeInDays);
                                         }
 
                                         // add to the HOME data table
@@ -170,7 +170,7 @@ namespace ns_HAR_parser.Services
             _homes_tbl.Columns.Add("propertyId");
             _homes_tbl.Columns.Add("listingId");
             _homes_tbl.Columns.Add("yearBuilt");
-            _homes_tbl.Columns.Add("timeOnRedfin");
+            _homes_tbl.Columns.Add("daysListed");
             _homes_tbl.Columns.Add("url");
             _homes_tbl.Columns.Add("listingRemarks");
         }
@@ -202,7 +202,7 @@ namespace ns_HAR_parser.Services
             myRow["propertyId"] = home_rec.propertyId;
             myRow["listingId"] = home_rec.listingId;
             myRow["yearBuilt"] = home_rec.yearBuilt;
-            myRow["timeOnRedfin"] = home_rec.timeOnRedfin;
+            myRow["daysListed"] = home_rec.daysListed;
             myRow["url"] = home_rec.url;
             myRow["listingRemarks"] = home_rec.listingRemarks;
 
