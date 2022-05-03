@@ -115,7 +115,7 @@ namespace ns_HAR_parser.Services
                                         if ((long)home["timeOnRedfin"]["value"] > 0) 
                                         {
                                             timeInMilli = (long)home["timeOnRedfin"]["value"];
-                                            timeInDays = (timeInMilli / 1000 / 60 / 60 / 24);
+                                            timeInDays = (decimal)(timeInMilli / 1000 / 60 / 60 / 24);
                                             home_rec.timeOnRedfin = (long)Math.Ceiling(timeInDays);
                                         }
 
