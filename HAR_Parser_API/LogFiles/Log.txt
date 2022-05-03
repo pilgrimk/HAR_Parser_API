@@ -11,3 +11,10 @@
 [2022-05-02T17:05:31] [Error]- ParseFile, Multipart body length limit 16384 exceeded.
 [2022-05-02T17:09:08] [Error]- ParseFile, Multipart body length limit 16384 exceeded.
 [2022-05-02T17:10:16] [Error]- ParseFile, Multipart body length limit 16384 exceeded.
+[2022-05-02T23:04:17] [Error]- ParseFile, Multipart body length limit 16384 exceeded.
+[2022-05-02T23:04:35] [Error]- ParseFile, Multipart body length limit 16384 exceeded.
+[2022-05-02T23:05:41] [Error]- ParseFile, Multipart body length limit 16384 exceeded.
+[2022-05-02T23:09:47] [Error]- ParseFile, Multipart body length limit 16384 exceeded.
+[2022-05-02T23:10:44] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.short.har 
+[2022-05-02T23:10:54] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.short.har' successfully imported; length: 1247301 
+[2022-05-02T23:22:44] [Process]- ProcessContentData, exit; 17 of 150 home files processed 

@@ -114,7 +114,7 @@ namespace ns_HAR_parser.Services
                                         {
                                             long timeInMilli = (long)home["timeOnRedfin"]["value"];
                                             decimal timeInDays = (decimal)(timeInMilli / (1000 * 60 * 60 * 24));
-                                            home_rec.daysListed = (long)Math.Ceiling(timeInDays);
+                                            home_rec.daysListed = (long)(Math.Floor(timeInDays) + 1);
                                         }
 
                                         // add to the HOME data table
