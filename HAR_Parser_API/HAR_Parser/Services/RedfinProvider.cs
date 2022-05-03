@@ -44,7 +44,6 @@ namespace ns_HAR_parser.Services
             Dictionary<string, string> mlsListings = new Dictionary<string, string>();
             _homes_tbl.Clear();
             long homes_counter_total = 0;
-            long timeInMilli = 0;
 
             // we're looking for "Content" elements in JSON data file
             homes_data.Clear();
@@ -113,8 +112,8 @@ namespace ns_HAR_parser.Services
                                         home_rec.timeOnRedfin = (long)0;
                                         if ((long)home["timeOnRedfin"]["value"] > 0)
                                         {
-                                            timeInMilli = (long)home["timeOnRedfin"]["value"];
-                                            timeInDays = (decimal)(timeInMilli / 1000 / 60 / 60 / 24);
+                                            long timeInMilli = (long)home["timeOnRedfin"]["value"];
+                                            decimal timeInDays = (decimal)(timeInMilli / 1000 / 60 / 60 / 24);
                                             home_rec.timeOnRedfin = (long)Math.Ceiling(timeInDays);
                                         }
 
