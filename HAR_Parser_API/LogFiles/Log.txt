@@ -18,3 +18,10 @@
 [2022-05-02T23:10:44] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.short.har 
 [2022-05-02T23:10:54] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.short.har' successfully imported; length: 1247301 
 [2022-05-02T23:22:44] [Process]- ProcessContentData, exit; 17 of 150 home files processed 
+[2022-05-09T23:43:14] [Process]- UploadFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.har 
+[2022-05-09T23:43:51] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.har 
+[2022-05-09T23:43:55] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.har' successfully imported; length: 2316481 
+[2022-05-09T23:43:56] [Process]- ProcessContentData, exit; 15 of 176 home files processed 
+[2022-05-09T23:47:12] [Process]- UploadFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har 
+[2022-05-09T23:47:32] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har 
+[2022-05-09T23:47:33] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har' successfully imported; length: 1779694 

@@ -20,7 +20,6 @@ namespace ns_HAR_parser.Services
         private JObject obj_JSON_file;
         private List<JToken> homes_data = new List<JToken>();
 
-
         // Constructor
         public RedfinProvider(string data_file)
         {
@@ -69,7 +68,7 @@ namespace ns_HAR_parser.Services
                             //add to the homes_data list
                             homes_data.Add(homes_value);
 
-                            foreach (JToken home in homes_data.Children())
+                            foreach (JToken home in homes_value.Children())
                             {
                                 try
                                 {
