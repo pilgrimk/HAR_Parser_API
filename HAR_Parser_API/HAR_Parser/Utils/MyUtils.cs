@@ -39,7 +39,7 @@ namespace ns_HAR_parser.Utils
             public long propertyId;
             public long listingId;
             public int yearBuilt;
-            public long daysListed;
+            public string daysListed;
             public string url;
             public string listingRemarks;
         }

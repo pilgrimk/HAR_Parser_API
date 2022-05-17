@@ -25,3 +25,12 @@
 [2022-05-09T23:47:12] [Process]- UploadFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har 
 [2022-05-09T23:47:32] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har 
 [2022-05-09T23:47:33] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har' successfully imported; length: 1779694 
+[2022-05-17T15:58:35] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har 
+[2022-05-17T15:58:35] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har' successfully imported; length: 1779694 
+[2022-05-17T16:02:19] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har 
+[2022-05-17T16:02:19] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har' successfully imported; length: 1779694 
+[2022-05-17T16:05:11] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har 
+[2022-05-17T16:05:11] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.zillow.com.short.har' successfully imported; length: 1779694 
+[2022-05-17T16:05:55] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.short.har 
+[2022-05-17T16:05:55] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.short.har' successfully imported; length: 1247301 
+[2022-05-17T16:05:56] [Process]- ProcessContentData, exit; 17 of 100 home files processed 

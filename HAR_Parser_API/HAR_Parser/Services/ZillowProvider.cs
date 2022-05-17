@@ -99,6 +99,13 @@ namespace ns_HAR_parser.Services
                                             home_rec.listingId = (long)home["id"];
                                             home_rec.url = (string)home["detailUrl"];
 
+                                            home_rec.daysListed = "";
+                                            if ((string)home["variableData"]["type"] == "DAYS_ON")
+                                            {
+                                                home_rec.daysListed = (string)home["variableData"]["text"];
+                                                home_rec.daysListed = home_rec.daysListed.Replace(" on Zillow", "");
+                                            };
+
                                             //home_rec.hoa = (string)home["hoa"]["value"];
                                             //home_rec.location = (string)home["location"]["value"];
                                             //home_rec.address2 = (string)home["unitNumber"]["value"];
@@ -109,15 +116,6 @@ namespace ns_HAR_parser.Services
                                             //home_rec.propertyId = (long)home["propertyId"];
                                             //home_rec.yearBuilt = (int)home["yearBuilt"]["value"];
                                             //home_rec.listingRemarks = (string)home["listingRemarks"];
-
-                                            //// calculate DAYS from MILLISECONDS
-                                            //home_rec.daysListed = (long)0;
-                                            //if ((long)home["timeOnRedfin"]["value"] > 0)
-                                            //{
-                                            //    long timeInMilli = (long)home["timeOnRedfin"]["value"];
-                                            //    decimal timeInDays = (decimal)(timeInMilli / (1000 * 60 * 60 * 24));
-                                            //    home_rec.daysListed = (long)(Math.Floor(timeInDays) + 1);
-                                            //}
 
                                             // add to the HOME data table
                                             if (_homes_tbl.Columns.Count == 0)

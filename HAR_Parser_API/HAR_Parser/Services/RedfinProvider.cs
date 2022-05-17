@@ -104,16 +104,17 @@ namespace ns_HAR_parser.Services
                                         home_rec.propertyId = (long)home["propertyId"];
                                         home_rec.listingId = (long)home["listingId"];
                                         home_rec.yearBuilt = (int)home["yearBuilt"]["value"];
-                                        home_rec.url = baseURL + "/" + (string)home["url"];
+                                        home_rec.url = baseURL + (string)home["url"];
                                         home_rec.listingRemarks = (string)home["listingRemarks"];
 
                                         // calculate DAYS from MILLISECONDS
-                                        home_rec.daysListed = (long)0;
+                                        home_rec.daysListed = "";
                                         if ((long)home["timeOnRedfin"]["value"] > 0)
                                         {
                                             long timeInMilli = (long)home["timeOnRedfin"]["value"];
                                             decimal timeInDays = (decimal)(timeInMilli / (1000 * 60 * 60 * 24));
-                                            home_rec.daysListed = (long)(Math.Floor(timeInDays) + 1);
+                                            long timeInDays2 = (long)(Math.Floor(timeInDays) + 1);
+                                            home_rec.daysListed = string.Format("{0} days", timeInDays2);
                                         }
 
                                         // add to the HOME data table
