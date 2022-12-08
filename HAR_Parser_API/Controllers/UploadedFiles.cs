@@ -10,6 +10,14 @@ using ns_HAR_parser.Utils;
 
 namespace HAR_Parser_API.Controllers
 {
+    public class File_Record
+    {
+        public string name;
+        public string fullName;
+        public DateTime created;
+        public long length;
+    }
+
     [Route("api/[controller]")]
     [ApiController]
     public class UploadedFiles : ControllerBase
@@ -18,23 +26,40 @@ namespace HAR_Parser_API.Controllers
 
         // GET: api/<UploadedFiles>
         [HttpGet]
-        public string Get()
+        public List<File_Record> Get()
         {
-            string response = "";
+            List<File_Record> response = new List<File_Record>();
             string dir = MyUtils.GetWorkingDirectory() + UPLOADSFILE_DIRECTORY;
             DirectoryInfo d = new DirectoryInfo(dir);
 
             FileInfo[] Files = d.GetFiles("*.har"); // getting HAR files only
             foreach (FileInfo file in Files)
             {
-                if (string.IsNullOrEmpty(response))
-                {
-                    response = file.Name;
-                }
-                else 
-                {
-                    response = response + "," + file.Name;
-                }
+                File_Record elem = new File_Record();
+                elem.name = file.Name;
+                elem.fullName = file.FullName;
+                elem.length = file.Length;
+                elem.created = file.CreationTime;
+
+                response.Add(elem);
+            }
+
+            return response;
+        }
+
+        // GET: api/<GetUploadedFileNames>
+        [Route("GetUploadedFileNames")]
+        [HttpGet]
+        public List<string> GetUploadedFileNames()
+        {
+            List<string> response = new List<string>();
+            string dir = MyUtils.GetWorkingDirectory() + UPLOADSFILE_DIRECTORY;
+            DirectoryInfo d = new DirectoryInfo(dir);
+
+            FileInfo[] Files = d.GetFiles("*.har"); // getting HAR files only
+            foreach (FileInfo file in Files)
+            {
+                response.Add(file.Name);
             }
 
             return response;
