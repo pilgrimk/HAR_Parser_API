@@ -34,3 +34,6 @@
 [2022-05-17T16:05:55] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.short.har 
 [2022-05-17T16:05:55] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.short.har' successfully imported; length: 1247301 
 [2022-05-17T16:05:56] [Process]- ProcessContentData, exit; 17 of 100 home files processed 
+[2022-10-10T18:17:54] [Process]- ParseFile, physicalPath: D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.short.har 
+[2022-10-10T18:17:55] [Process]- Source file 'D:\My Documents\Programming\Visual Studio\Projects\HAR_Parser_API\HAR_Parser_API\Uploads\www.redfin.com.short.har' successfully imported; length: 1247301 
+[2022-10-10T18:17:55] [Process]- ProcessContentData, exit; 17 of 100 home files processed 
